@@ -14,10 +14,6 @@ export const COMPANY_INFO = {
   website: "www.sures.com.ar"
 };
 
-// --- Helper for Images ---
-// Using placeholder service until client replaces with real images
-const getPlaceholder = (text: string) => `https://placehold.co/600x400/f3f4f6/00007c?text=${encodeURIComponent(text)}`;
-
 export const PRODUCTS: Product[] = [
   // --- VENTANA MIDEA ---
   {
@@ -31,7 +27,7 @@ export const PRODUCTS: Product[] = [
     refrigerant: "R-410A",
     weight: "34.7 kg", 
     dimensions: "60 x 38 x 56 cm",
-    features: ["Modo Sleep", "Función Timer", "1 Año de Garantía", "Eficiencia B"],
+    features: ["Modo Reposo", "Función Timer", "1 Año de Garantía", "Eficiencia B"],
     image: "/2250 FRIO SOLO MIDEA.jpg", 
     category: "residential"
   },
@@ -46,8 +42,8 @@ export const PRODUCTS: Product[] = [
     refrigerant: "R-410A",
     weight: "37 kg",
     dimensions: "60 x 38 x 56 cm",
-    features: ["Modo Sleep", "Función Timer", "1 Año de Garantía", "Eficiencia B"],
-    image: "/3000 FRIO SOLO MIDEA.jpg",
+    features: ["Modo Reposo", "Función Timer", "1 Año de Garantía", "Eficiencia B"],
+    image: "/2250 FRIO SOLO MIDEA.jpg",
     category: "residential"
   },
   {
@@ -61,8 +57,8 @@ export const PRODUCTS: Product[] = [
     refrigerant: "R-410A",
     weight: "53 kg",
     dimensions: "68 x 42.8 x 66 cm",
-    features: ["Modo Sleep", "Función Timer", "1 Año de Garantía", "Eficiencia B"],
-    image: "/4500 FRIO SOLO MIDEA.webp",
+    features: ["Modo Reposo", "Función Timer", "1 Año de Garantía", "Eficiencia B"],
+    image: "/2250 FRIO SOLO MIDEA.jpg",
     category: "residential"
   },
 
@@ -179,7 +175,7 @@ export const PRODUCTS: Product[] = [
     refrigerant: "R-410A",
     weight: "Cond: 48kg",
     dimensions: "Int: 125x36x34 cm",
-    features: ["Inverter", "Compatible Google/Alexa", "Gold Cover", "Función Gear"],
+    features: ["Inverter", "Compatible Google/Alexa", "Recubrimiento Dorado", "Función Gear"],
     image: "/8750 FRIO CALOR MIDEA INVERTER.jpg",
     category: "residential"
   },
@@ -194,7 +190,7 @@ export const PRODUCTS: Product[] = [
     voltage: "220 V",
     refrigerant: "R-32",
     features: ["Gas R-32", "Inverter", "Wi-Fi", "Ahorro 35%"],
-    image: getPlaceholder("Carrier Split R32"),
+    image: "/2250 FRIO CALOR XPOWER INVERTER R-32.webp",
     category: "residential"
   },
   {
@@ -205,8 +201,8 @@ export const PRODUCTS: Product[] = [
     kcal: 2993,
     voltage: "220 V",
     refrigerant: "R-32",
-    features: ["Gas R-32", "Inverter", "Wi-Fi", "Follow Me"],
-    image: getPlaceholder("Carrier Split R32"),
+    features: ["Gas R-32", "Inverter", "Wi-Fi", "Sígueme"],
+    image: "/3000 FRIO CALOR XPOWER INVERTER R-32.png",
     category: "residential"
   },
   {
@@ -217,8 +213,8 @@ export const PRODUCTS: Product[] = [
     kcal: 4420,
     voltage: "220 V",
     refrigerant: "R-32",
-    features: ["Gas R-32", "Inverter", "Wi-Fi", "Silver Ion Filter"],
-    image: getPlaceholder("Carrier Split R32"),
+    features: ["Gas R-32", "Inverter", "Wi-Fi", "Filtro Ion Plata"],
+    image: "/3000 FRIO CALOR XPOWER INVERTER R-32.png",
     category: "residential"
   },
   {
@@ -230,7 +226,7 @@ export const PRODUCTS: Product[] = [
     voltage: "220 V",
     refrigerant: "R-32",
     features: ["Gas R-32", "Inverter", "Wi-Fi", "Alta Potencia"],
-    image: getPlaceholder("Carrier Split R32"),
+    image: "/3000 FRIO CALOR XPOWER INVERTER R-32.png",
     category: "residential"
   },
 
@@ -243,8 +239,8 @@ export const PRODUCTS: Product[] = [
     kcal: 2245,
     voltage: "220 V",
     refrigerant: "R-410A",
-    features: ["Led Display", "Gold Cover", "Modo Sleep", "Eficiencia A"],
-    image: getPlaceholder("Midea Split"),
+    features: ["Led Display", "Recubrimiento Dorado", "Modo Reposo", "Eficiencia A"],
+    image: "/2250 FRIO CALOR MIDEA.png",
     category: "residential"
   },
   {
@@ -255,8 +251,8 @@ export const PRODUCTS: Product[] = [
     kcal: 2666,
     voltage: "220 V",
     refrigerant: "R-410A",
-    features: ["Led Display", "Gold Cover", "Auto-limpieza"],
-    image: getPlaceholder("Midea Split"),
+    features: ["Led Display", "Recubrimiento Dorado", "Auto-limpieza"],
+    image: "/3000 FRIO CALOR MIDEA.png",
     category: "residential"
   },
   {
@@ -267,8 +263,8 @@ export const PRODUCTS: Product[] = [
     kcal: 4162,
     voltage: "220 V",
     refrigerant: "R-410A",
-    features: ["Led Display", "Gold Cover", "Alta Capacidad"],
-    image: getPlaceholder("Midea Split"),
+    features: ["Led Display", "Recubrimiento Dorado", "Alta Capacidad"],
+    image: "/4300 FRIO CALOR MIDEA.png",
     category: "residential"
   },
   {
@@ -279,8 +275,8 @@ export const PRODUCTS: Product[] = [
     kcal: 5400,
     voltage: "220 V",
     refrigerant: "R-410A",
-    features: ["Led Display", "Gold Cover", "Alta Potencia"],
-    image: getPlaceholder("Midea Split"),
+    features: ["Led Display", "Recubrimiento Dorado", "Alta Potencia"],
+    image: "/5400 FRIO CALOR MIDEA.png",
     category: "residential"
   },
 
@@ -294,7 +290,7 @@ export const PRODUCTS: Product[] = [
     voltage: "220 V",
     refrigerant: "R-32",
     features: ["Gas R-32", "Inverter", "Wi-Fi", "Ahorro Energía"],
-    image: getPlaceholder("Midea Inverter R32"),
+    image: "/2250 FRIO CALOR MIDEA INVERTER R-32.png",
     category: "residential"
   },
   {
@@ -306,7 +302,7 @@ export const PRODUCTS: Product[] = [
     voltage: "220 V",
     refrigerant: "R-32",
     features: ["Gas R-32", "Inverter", "Wi-Fi"],
-    image: getPlaceholder("Midea Inverter R32"),
+    image: "/3000 FRIO CALOR MIDEA INVERTER R-32.png",
     category: "residential"
   },
   {
@@ -318,7 +314,7 @@ export const PRODUCTS: Product[] = [
     voltage: "220 V",
     refrigerant: "R-32",
     features: ["Gas R-32", "Inverter", "Wi-Fi"],
-    image: getPlaceholder("Midea Inverter R32"),
+    image: "/4500 FRIO CALOR MIDEA INVERTER R-32.png",
     category: "residential"
   },
   {
@@ -330,7 +326,7 @@ export const PRODUCTS: Product[] = [
     voltage: "220 V",
     refrigerant: "R-32",
     features: ["Gas R-32", "Inverter", "Wi-Fi"],
-    image: getPlaceholder("Midea Inverter R32"),
+    image: "/5500 FRIO CALOR MIDEA INVERTER R-32.png",
     category: "residential"
   },
 
@@ -343,8 +339,8 @@ export const PRODUCTS: Product[] = [
     kcal: 2967,
     voltage: "220 V",
     refrigerant: "R-410A",
-    features: ["Inverter", "Gold Cover", "Wi-Fi", "High Density Filter"],
-    image: getPlaceholder("Midea Inverter"),
+    features: ["Inverter", "Recubrimiento Dorado", "Wi-Fi", "Filtro Alta Densidad"],
+    image: "/3000 FRIO CALOR MIDEA INVERTER.png",
     category: "residential"
   },
   {
@@ -355,8 +351,8 @@ export const PRODUCTS: Product[] = [
     kcal: 4400,
     voltage: "220 V",
     refrigerant: "R-410A",
-    features: ["Inverter", "Gold Cover", "Wi-Fi"],
-    image: getPlaceholder("Midea Inverter"),
+    features: ["Inverter", "Recubrimiento Dorado", "Wi-Fi"],
+    image: "/4500 FRIO CALOR MIDEA INVERTER.png",
     category: "residential"
   },
 
@@ -369,8 +365,8 @@ export const PRODUCTS: Product[] = [
     kcal: 3300,
     voltage: "220 V",
     refrigerant: "R-32",
-    features: ["Breezeless Technology", "Inverter", "Wi-Fi", "Micro-orificios"],
-    image: getPlaceholder("Midea Breezeless"),
+    features: ["Tecnología Sin Corrientes", "Inverter", "Wi-Fi", "Micro-orificios"],
+    image: "/3000 FRIO CALOR MIDEA BREEZELESS E.png",
     category: "residential"
   },
   {
@@ -381,8 +377,8 @@ export const PRODUCTS: Product[] = [
     kcal: 5000,
     voltage: "220 V",
     refrigerant: "R-32",
-    features: ["Breezeless Technology", "Inverter", "Wi-Fi", "Alta Eficiencia"],
-    image: getPlaceholder("Midea Breezeless"),
+    features: ["Tecnología Sin Corrientes", "Inverter", "Wi-Fi", "Alta Eficiencia"],
+    image: "/5500 FRIO CALOR MIDEA BREEZELESS E.png",
     category: "residential"
   },
 
@@ -396,7 +392,7 @@ export const PRODUCTS: Product[] = [
     voltage: "220 V",
     refrigerant: "R-410A",
     features: ["Perfil Bajo", "Bajo Ruido", "Control Alámbrico"],
-    image: getPlaceholder("Baja Silueta"),
+    image: "/1,5 TR FRIO CALOR MONOFASICO BAJA SILUETA TRADICIONAL.jpg",
     category: "commercial"
   },
   {
@@ -408,7 +404,7 @@ export const PRODUCTS: Product[] = [
     voltage: "220 V",
     refrigerant: "R-410A",
     features: ["Perfil Bajo", "Bajo Ruido"],
-    image: getPlaceholder("Baja Silueta"),
+    image: "/2 TR FRIO CALOR MONOFASICO BAJA SILUETA TRADICIONAL.jpg",
     category: "commercial"
   },
   {
@@ -420,7 +416,7 @@ export const PRODUCTS: Product[] = [
     voltage: "220 V",
     refrigerant: "R-410A",
     features: ["Perfil Bajo", "Bajo Ruido"],
-    image: getPlaceholder("Baja Silueta"),
+    image: "/3 TR FRIO CALOR MONOFASICO BAJO SILUETA TRADICIONAL.jpg",
     category: "commercial"
   },
   {
@@ -432,7 +428,7 @@ export const PRODUCTS: Product[] = [
     voltage: "380 V",
     refrigerant: "R-410A",
     features: ["Trifásico", "Alta Capacidad"],
-    image: getPlaceholder("Baja Silueta"),
+    image: "/5 TR FRIO CALOR TRIFASICO BAJA SILUETA TRADICIONAL.jpg",
     category: "commercial"
   },
   {
@@ -444,7 +440,7 @@ export const PRODUCTS: Product[] = [
     voltage: "380 V",
     refrigerant: "R-410A",
     features: ["Trifásico", "Máxima Capacidad"],
-    image: getPlaceholder("Baja Silueta"),
+    image: "/6 TR FRIO CALOR TRIFASICO BAJA SILUETA TRADICIONAL.jpg",
     category: "commercial"
   },
 
@@ -458,7 +454,7 @@ export const PRODUCTS: Product[] = [
     voltage: "220 V",
     refrigerant: "R-410A",
     features: ["Inverter", "Wi-Fi", "Ahorro Energético"],
-    image: getPlaceholder("Baja Silueta Inverter"),
+    image: "/3 TR FRIO CALOR TRIFASICO BAJA SILUETA INVERTER.jpg",
     category: "commercial"
   },
   {
@@ -470,7 +466,7 @@ export const PRODUCTS: Product[] = [
     voltage: "220 V",
     refrigerant: "R-410A",
     features: ["Inverter", "Wi-Fi", "Alta Eficiencia"],
-    image: getPlaceholder("Baja Silueta Inverter"),
+    image: "/5 TR FRIO CALOR TRIFASICO BAJA SILUETA INVERTER.jpg",
     category: "commercial"
   },
   {
@@ -482,7 +478,7 @@ export const PRODUCTS: Product[] = [
     voltage: "220 V",
     refrigerant: "R-410A",
     features: ["Inverter", "Wi-Fi", "Máximo Rendimiento"],
-    image: getPlaceholder("Baja Silueta Inverter"),
+    image: "/6 TR FRIO CALOR TRIFASICO BAJA SILUETA INVERTER.jpg",
     category: "commercial"
   },
 
@@ -496,7 +492,7 @@ export const PRODUCTS: Product[] = [
     voltage: "380 V",
     refrigerant: "R-410A",
     features: ["Compresor Scroll", "Protección de Fase"],
-    image: getPlaceholder("Conductos Separados"),
+    image: "/5 TR FRIO CALOR TRIFASICO SISTEMA SEPARADO.jpg",
     category: "commercial"
   },
   {
@@ -508,7 +504,7 @@ export const PRODUCTS: Product[] = [
     voltage: "380 V",
     refrigerant: "R-410A",
     features: ["Compresor Scroll", "Alta Durabilidad"],
-    image: getPlaceholder("Conductos Separados"),
+    image: "/6 TR FRIO CALOR TRIFASICO SISTEMAS SEPARADOS.jpg",
     category: "commercial"
   },
   {
@@ -520,7 +516,7 @@ export const PRODUCTS: Product[] = [
     voltage: "380 V",
     refrigerant: "R-410A",
     features: ["Gran Capacidad", "Bajo Nivel Sonoro"],
-    image: getPlaceholder("Conductos Separados"),
+    image: "/7,5 FRIO CALOR TRIFASICO SISTEMAS SEPARADOS.jpg",
     category: "commercial"
   },
   {
@@ -532,7 +528,7 @@ export const PRODUCTS: Product[] = [
     voltage: "380 V",
     refrigerant: "R-410A",
     features: ["Industrial", "Compresor Scroll"],
-    image: getPlaceholder("Conductos Comercial"),
+    image: "/10 TR FRIO CALOR TRIFASICO SISTEMAS SEPARADOS.jpg",
     category: "commercial"
   },
   {
@@ -544,7 +540,7 @@ export const PRODUCTS: Product[] = [
     voltage: "380 V",
     refrigerant: "R-410A",
     features: ["Industrial", "Máxima Potencia"],
-    image: getPlaceholder("Conductos Comercial"),
+    image: "/12,5 TR FRIO CALOR TRIFASICO SISTEMAS SEPARADOS.jpg",
     category: "commercial"
   },
 
@@ -558,7 +554,7 @@ export const PRODUCTS: Product[] = [
     voltage: "220 V",
     power: "Gas",
     features: ["Eficiencia 93%", "Multiposición"],
-    image: getPlaceholder("Calefactor Gas"),
+    image: "/Calefactor a Gas para Conductos.jpg",
     category: "commercial"
   },
   {
@@ -570,7 +566,7 @@ export const PRODUCTS: Product[] = [
     voltage: "220 V",
     power: "Gas",
     features: ["Eficiencia 93.6%", "Ignición Superficie Caliente"],
-    image: getPlaceholder("Calefactor Gas"),
+    image: "/Calefactor a Gas para Conductos.jpg",
     category: "commercial"
   },
   {
@@ -582,7 +578,7 @@ export const PRODUCTS: Product[] = [
     voltage: "220 V",
     power: "Gas",
     features: ["Eficiencia 93.5%", "Alta Potencia"],
-    image: getPlaceholder("Calefactor Gas"),
+    image: "/Calefactor a Gas para Conductos.jpg",
     category: "commercial"
   },
 
@@ -596,7 +592,7 @@ export const PRODUCTS: Product[] = [
     voltage: "380 V",
     refrigerant: "R-407C",
     features: ["Calefactor a Gas", "Compresor Scroll"],
-    image: getPlaceholder("Rooftop Ecológico"),
+    image: "/5 TR FRIO CALOR TRIFASICO ROOFTOP ECOLOGICO.jpg",
     category: "commercial"
   },
   {
@@ -608,7 +604,7 @@ export const PRODUCTS: Product[] = [
     voltage: "380 V",
     refrigerant: "R-407C",
     features: ["Calefactor a Gas", "Exterior"],
-    image: getPlaceholder("Rooftop Ecológico"),
+    image: "/20 TR FRIO CALOR ROOFTOP ECOLOGICO.jpg",
     category: "commercial"
   },
   {
@@ -620,7 +616,7 @@ export const PRODUCTS: Product[] = [
     voltage: "380 V",
     refrigerant: "R-410A",
     features: ["Certificación LEED", "Alta Eficiencia"],
-    image: getPlaceholder("Rooftop Weathermaker"),
+    image: "/10 TR FRIO SOLO TRIFASICO ROOFTOP WEATHERMAKER.jpg",
     category: "commercial"
   },
   {
@@ -632,7 +628,7 @@ export const PRODUCTS: Product[] = [
     voltage: "380 V",
     refrigerant: "R-410A",
     features: ["Certificación LEED", "Doble Circuito"],
-    image: getPlaceholder("Rooftop Weathermaker"),
+    image: "/10 TR FRIO SOLO TRIFASICO ROOFTOP WEATHERMAKER.jpg",
     category: "commercial"
   },
   {
@@ -644,7 +640,7 @@ export const PRODUCTS: Product[] = [
     voltage: "380 V",
     refrigerant: "R-410A",
     features: ["Instalación Simple", "Scroll Eficiente"],
-    image: getPlaceholder("Midea Rooftop"),
+    image: "/8,5 TR FRIO CALOR MIDEA ROOFTOP.jpg",
     category: "commercial"
   },
   {
@@ -656,7 +652,7 @@ export const PRODUCTS: Product[] = [
     voltage: "380 V",
     refrigerant: "R-410A",
     features: ["Gran Capacidad", "Industrial"],
-    image: getPlaceholder("Midea Rooftop"),
+    image: "/8,5 TR FRIO CALOR MIDEA ROOFTOP.jpg",
     category: "commercial"
   },
 
@@ -669,8 +665,8 @@ export const PRODUCTS: Product[] = [
     kcal: 18000,
     voltage: "380 V",
     refrigerant: "R-410A",
-    features: ["Control Touch", "Módulo Hidrónico"],
-    image: getPlaceholder("Chiller"),
+    features: ["Control Táctil", "Módulo Hidrónico"],
+    image: "/6 TR TRIFASICO CHILLER.jpg",
     category: "commercial"
   },
   {
@@ -682,7 +678,7 @@ export const PRODUCTS: Product[] = [
     voltage: "380 V",
     refrigerant: "R-410A",
     features: ["Alta Eficiencia", "Bajo Ruido"],
-    image: getPlaceholder("Chiller"),
+    image: "/6 TR TRIFASICO CHILLER.jpg",
     category: "commercial"
   }
 ];

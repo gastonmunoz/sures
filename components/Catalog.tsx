@@ -557,17 +557,16 @@ const Catalog: React.FC = () => {
               </button>
 
               {/* Left Column: Image */}
-              <div className="w-full md:w-1/2 bg-gradient-to-br from-white/5 to-transparent p-8 md:p-12 flex items-center justify-center relative">
-                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 to-transparent"></div>
+              <div className="w-full md:w-1/2 bg-white p-8 md:p-12 flex items-center justify-center relative">
                  <img 
                    src={viewingProduct.image} 
                    alt={viewingProduct.name} 
-                   className="relative z-10 w-full max-h-[400px] object-contain mix-blend-multiply drop-shadow-2xl"
+                   className="relative z-10 w-full max-h-[400px] object-contain"
                  />
                  {checkInverter(viewingProduct) && (
                     <div className="absolute bottom-6 left-6 z-10 flex items-center gap-1 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg">
                       <Zap size={12} className="fill-current" />
-                      Inverter Technology
+                      Tecnología Inverter
                     </div>
                  )}
               </div>
@@ -575,7 +574,7 @@ const Catalog: React.FC = () => {
               {/* Right Column: Details */}
               <div className="w-full md:w-1/2 p-8 md:p-10 flex flex-col">
                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-sures-primary font-bold text-sm tracking-widest uppercase">{viewingProduct.type}</span>
+                    <span className="text-blue-400 font-bold text-sm tracking-widest uppercase">{viewingProduct.type}</span>
                     <button 
                       onClick={() => setViewingProduct(null)}
                       className="hidden md:block rounded-full hover:bg-white/10 p-1 text-gray-400 hover:text-white transition-colors"
@@ -728,7 +727,7 @@ const Catalog: React.FC = () => {
                               <Zap size={12} /> INVERTER
                             </span>
                           ) : (
-                            <span className="text-gray-500">Standard (On/Off)</span>
+                            <span className="text-gray-500">Estándar (On/Off)</span>
                           )}
                         </td>
                       ))}

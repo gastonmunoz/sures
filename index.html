@@ -4,6 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Google Analytics - Solo en producción -->
+    <script>
+      if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-EK0QFKT1VC';
+        document.head.appendChild(script);
+        
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EK0QFKT1VC');
+      }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo-sures.png" />
+    <link rel="apple-touch-icon" href="/logo-sures.png" />
+    
     <!-- Primary Meta Tags -->
     <title>Sures | Climatización Industrial y Comercial - Dealers Carrier y Midea</title>
     <meta name="title" content="Sures | Climatización Industrial y Comercial - Dealers Carrier y Midea">
