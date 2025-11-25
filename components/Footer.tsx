@@ -6,18 +6,15 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-sures-dark text-white py-16 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           
           <div className="col-span-1 md:col-span-2">
-            {/* SVG Logo - White Version */}
-            <div className="h-10 w-auto mb-6">
-                <svg viewBox="0 0 200 60" className="h-full w-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="25" cy="30" r="22" stroke="white" strokeWidth="3" />
-                    <circle cx="25" cy="30" r="16" stroke="white" strokeWidth="1" opacity="0.5" />
-                    <text x="58" y="38" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="34" fill="white" letterSpacing="-1">SURES</text>
-                    <text x="60" y="52" fontFamily="Arial, sans-serif" fontWeight="600" fontSize="8" fill="white" letterSpacing="3.5">CLIMATIZACION</text>
-                </svg>
-            </div>
+            {/* Logo PNG original */}
+            <img 
+              src="/logo-sures.png" 
+              alt="Sures Climatización" 
+              className="h-16 w-auto mb-6"
+            />
 
             <p className="text-gray-400 max-w-sm">
               {COMPANY_INFO.legalName}
@@ -33,6 +30,27 @@ const Footer: React.FC = () => {
               <li><a href="#services" className="hover:text-white transition-colors">Servicios</a></li>
               <li><a href="#catalog" className="hover:text-white transition-colors">Catálogo</a></li>
               <li><a href="#contact" className="hover:text-white transition-colors">Contacto</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-bold mb-4">Contacto</h3>
+            <ul className="space-y-2 text-gray-400">
+              <li>
+                <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-white transition-colors">
+                  {COMPANY_INFO.email}
+                </a>
+              </li>
+              <li>
+                <a href={`tel:${COMPANY_INFO.phone1.replace(/\s/g, '')}`} className="hover:text-white transition-colors">
+                  {COMPANY_INFO.phone1}
+                </a>
+              </li>
+              <li>
+                <a href={`tel:${COMPANY_INFO.phone2.replace(/\s/g, '')}`} className="hover:text-white transition-colors">
+                  {COMPANY_INFO.phone2}
+                </a>
+              </li>
             </ul>
           </div>
 

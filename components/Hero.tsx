@@ -5,21 +5,18 @@ import { COMPANY_INFO } from '../constants';
 const SLIDES = [
   {
     id: 1,
-    // Technician with gauges / tools
-    image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop",
-    alt: "Técnico especialista midiendo presión en equipo industrial"
+    image: "/hero_1.png",
+    alt: "Sures Climatización - Servicios profesionales"
   },
   {
     id: 2,
-    // Industrial green/metal pipes (Chillers/Cooling Towers)
-    image: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=2070&auto=format&fit=crop",
-    alt: "Sistemas industriales de tuberías y refrigeración central"
+    image: "/hero_2.png",
+    alt: "Sures Climatización - Instalaciones industriales"
   },
   {
     id: 3,
-    // Rooftop units / Ventilation
-    image: "https://images.unsplash.com/photo-1563931307-a276b1152a13?auto=format&fit=crop&q=80", 
-    alt: "Unidades Rooftop de tratamiento de aire en terraza corporativa"
+    image: "/hero_3.png",
+    alt: "Sures Climatización - Equipos de climatización"
   }
 ];
 

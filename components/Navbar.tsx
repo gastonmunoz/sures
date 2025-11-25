@@ -34,31 +34,12 @@ const Navbar: React.FC = () => {
           {/* Logo Section */}
           <div className="flex items-center">
             <a href="#home" className="flex items-center gap-2 group">
-              {/* Sures Logo Recreation - SVG ensures no background and perfect scaling */}
-              <div className="relative h-12 w-auto flex items-center">
-                 <svg 
-                   viewBox="0 0 200 60" 
-                   className={`h-full w-auto transition-all duration-300 transform origin-left group-hover:scale-105`}
-                   fill="none" 
-                   xmlns="http://www.w3.org/2000/svg"
-                 >
-                   {/* Colors adapt to scroll state: ALWAYS WHITE now due to dark hero, but keeping logic just in case */}
-                   <style>
-                     {`
-                       .logo-fill { fill: #ffffff; transition: fill 0.3s ease; }
-                       .logo-stroke { stroke: #ffffff; transition: stroke 0.3s ease; }
-                     `}
-                   </style>
-                   
-                   {/* Circle Emblem */}
-                   <circle cx="25" cy="30" r="22" className="logo-stroke" strokeWidth="3" />
-                   <circle cx="25" cy="30" r="16" className="logo-stroke" strokeWidth="1" opacity="0.5" />
-                   
-                   {/* Text */}
-                   <text x="58" y="38" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="34" className="logo-fill" letterSpacing="-1">SURES</text>
-                   <text x="60" y="52" fontFamily="Arial, sans-serif" fontWeight="600" fontSize="8" className="logo-fill" letterSpacing="3.5">CLIMATIZACION</text>
-                 </svg>
-              </div>
+              {/* Logo PNG original */}
+              <img 
+                src="/logo-sures.png" 
+                alt="Sures Climatización" 
+                className="h-12 w-auto transition-all duration-300 transform origin-left group-hover:scale-105"
+              />
             </a>
           </div>
 

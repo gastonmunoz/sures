@@ -6,10 +6,10 @@ export const COMPANY_INFO = {
   name: "Sures",
   legalName: "Hijos y Nietos de Maria Asunción Cornejo S.R.L.",
   address: "Aristóbulo del Valle 2518, Lanús Oeste, Buenos Aires",
-  phone1: "(011) 4208-5835",
-  phone2: "(011) 4209-5771",
+  phone1: "11 3240-1124",
+  phone2: "11 3240-1768",
   whatsapp: "5491132401768",
-  email: "gerencia@sures.com.ar",
+  email: "administracion@sures.com.ar",
   dealers: ["Carrier", "Midea"],
   website: "www.sures.com.ar"
 };
@@ -32,7 +32,7 @@ export const PRODUCTS: Product[] = [
     weight: "34.7 kg", 
     dimensions: "60 x 38 x 56 cm",
     features: ["Modo Sleep", "Función Timer", "1 Año de Garantía", "Eficiencia B"],
-    image: "https://http2.mlstatic.com/D_NQ_NP_956793-MLA46617709320_072021-O.webp", 
+    image: "/2250 FRIO SOLO MIDEA.jpg", 
     category: "residential"
   },
   {
@@ -47,7 +47,7 @@ export const PRODUCTS: Product[] = [
     weight: "37 kg",
     dimensions: "60 x 38 x 56 cm",
     features: ["Modo Sleep", "Función Timer", "1 Año de Garantía", "Eficiencia B"],
-    image: "https://http2.mlstatic.com/D_NQ_NP_704533-MLA45607570642_042021-O.webp",
+    image: "/3000 FRIO SOLO MIDEA.jpg",
     category: "residential"
   },
   {
@@ -62,7 +62,7 @@ export const PRODUCTS: Product[] = [
     weight: "53 kg",
     dimensions: "68 x 42.8 x 66 cm",
     features: ["Modo Sleep", "Función Timer", "1 Año de Garantía", "Eficiencia B"],
-    image: "https://http2.mlstatic.com/D_NQ_NP_820905-MLA46617812036_072021-O.webp",
+    image: "/4500 FRIO SOLO MIDEA.webp",
     category: "residential"
   },
 
@@ -78,7 +78,7 @@ export const PRODUCTS: Product[] = [
     weight: "Cond: 80kg",
     dimensions: "Int: 128x23x67 cm",
     features: ["Compresor Scroll", "Diseño Moderno", "3 Años de Garantía", "Descarga Vertical"],
-    image: getPlaceholder("Carrier Elite Piso Techo"),
+    image: "/3 TR MONOFASICO FRIO CALOR ELITE.jpg",
     category: "residential"
   },
   {
@@ -92,7 +92,7 @@ export const PRODUCTS: Product[] = [
     weight: "Cond: 77kg",
     dimensions: "Int: 128x23x67 cm",
     features: ["Trifásico", "Compresor Scroll", "3 Años de Garantía"],
-    image: getPlaceholder("Carrier Elite Piso Techo"),
+    image: "/3 TR TRIFASICO FRIO CALOR ELITE.jpg",
     category: "residential"
   },
   {
@@ -106,7 +106,7 @@ export const PRODUCTS: Product[] = [
     weight: "Cond: 80kg",
     dimensions: "Int: 128x23x41 cm",
     features: ["Tecnología Inverter", "Wi-Fi Integrado", "Trifásico"],
-    image: getPlaceholder("Carrier Elite Inverter"),
+    image: "/5 TR TRIFASICO FRIO CALOR ELITE.png",
     category: "commercial"
   },
   {
@@ -120,7 +120,7 @@ export const PRODUCTS: Product[] = [
     weight: "Cond: 97kg",
     dimensions: "Int: 165x23x67 cm",
     features: ["Alta Capacidad", "Trifásico", "Eficiencia B"],
-    image: getPlaceholder("Carrier Elite 6TR"),
+    image: "/6 TR TRIFASICO FRIO CALOR ELITE.webp",
     category: "commercial"
   },
 
@@ -136,7 +136,7 @@ export const PRODUCTS: Product[] = [
     weight: "Cond: 67kg",
     dimensions: "Int: 165x23x67 cm",
     features: ["Inverter", "Refrigerante Ecológico", "Súper Silencioso"],
-    image: getPlaceholder("Carrier Inverter 3TR"),
+    image: "/3 TR TRIFASICO FRIO CALOR ELITE INVERTER.jpg",
     category: "residential"
   },
   {
@@ -150,7 +150,7 @@ export const PRODUCTS: Product[] = [
     weight: "Cond: 76kg",
     dimensions: "Int: 165x23x41 cm",
     features: ["Gas R-32 Ecológico", "Inverter", "Wi-Fi"],
-    image: getPlaceholder("Carrier Inverter R32"),
+    image: "/5 TR TRIFASICO FRIO CALOR ELITE INVERTER R-32.png",
     category: "commercial"
   },
   {
@@ -164,7 +164,7 @@ export const PRODUCTS: Product[] = [
     weight: "Cond: 85kg",
     dimensions: "Int: 165x23x37 cm",
     features: ["Gas R-32 Ecológico", "Inverter", "Alta Eficiencia"],
-    image: getPlaceholder("Carrier Inverter R32"),
+    image: "/6 TR TRIFASICO FRIO CALOR ELITE INVERTER R-32.png",
     category: "commercial"
   },
 
@@ -180,7 +180,7 @@ export const PRODUCTS: Product[] = [
     weight: "Cond: 48kg",
     dimensions: "Int: 125x36x34 cm",
     features: ["Inverter", "Compatible Google/Alexa", "Gold Cover", "Función Gear"],
-    image: getPlaceholder("Midea Smart 8750"),
+    image: "/8750 FRIO CALOR MIDEA INVERTER.jpg",
     category: "residential"
   },
 
