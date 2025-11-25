@@ -1,0 +1,9 @@
+{
+  "name": "Sures Climatización",
+  "description": "Especialistas en climatización industrial y comercial. Dealers oficiales Carrier y Midea. Venta, instalación y mantenimiento en Buenos Aires.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
