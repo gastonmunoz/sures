@@ -98,6 +98,115 @@ export const sendChatMessage = async (message: string): Promise<string> => {
   }
 };
 
+// BTU Calculator AI Recommendation
+interface CalculatorInput {
+  squareMeters: number;
+  ceilingHeight: number;
+  orientation: string;
+  windowCount: number;
+  windowType: string;
+  sunExposure: string;
+  peopleCount: number;
+  electronics: string;
+  roofType: string;
+  roomType: string;
+  calculatedFrigorias: number;
+  recommendedProducts: string[];
+}
+
+export const getAIRecommendation = async (
+  input: CalculatorInput
+): Promise<string> => {
+  try {
+    const prompt = `Sos un experto en climatización de Sures Argentina. Un cliente completó nuestra calculadora de frigorías con estos datos:
+
+**Ambiente:**
+- Tipo: ${input.roomType}
+- Superficie: ${input.squareMeters} m²
+- Altura techo: ${input.ceilingHeight}m
+- Orientación: ${input.orientation}
+
+**Características:**
+- Ventanas: ${input.windowCount} (vidrio ${input.windowType})
+- Exposición solar: ${input.sunExposure}
+- Personas: ${input.peopleCount}
+- Electrónicos: ${input.electronics}
+- Tipo de techo: ${input.roofType}
+
+**Resultado del cálculo:** ${input.calculatedFrigorias} frigorías
+
+**Productos pre-seleccionados:** ${input.recommendedProducts.join(', ') || 'Ninguno específico'}
+
+Dá una recomendación BREVE (máximo 3 oraciones) y PROFESIONAL sobre:
+1. Si el cálculo parece adecuado para ese ambiente
+2. Si recomendás tecnología Inverter para ese caso y por qué
+3. Un tip de instalación o uso para ese tipo de ambiente
+
+Usá lenguaje argentino formal pero cercano. NO repitas los datos del cálculo.`;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: prompt,
+    });
+
+    return response.text || "Recomendamos consultar con nuestros técnicos para un asesoramiento personalizado.";
+  } catch (error) {
+    console.error("AI Recommendation Error:", error);
+    return "Para un asesoramiento más preciso, le recomendamos contactarnos directamente.";
+  }
+};
+
+// Quiz AI Recommendation
+interface QuizInput {
+  usage: string;
+  squareMeters: string;
+  priority: string;
+  installation: string;
+  wifi: string;
+  recommendedProducts: string[];
+}
+
+export const getQuizRecommendation = async (
+  input: QuizInput
+): Promise<string> => {
+  try {
+    const sizeDescriptions: Record<string, string> = {
+      'pequeño': 'hasta 20 m²',
+      'mediano': '20 a 35 m²',
+      'grande': '35 a 60 m²',
+      'muy-grande': 'más de 60 m²'
+    };
+
+    const prompt = `Sos un asesor de climatización de Sures Argentina, con tono amigable y cercano (argentino).
+
+Un cliente completó nuestro quiz rápido:
+- **Uso:** ${input.usage === 'residencial' ? 'Casa/Departamento' : 'Oficina/Local comercial'}
+- **Tamaño:** ${sizeDescriptions[input.squareMeters] || input.squareMeters}
+- **Prioridad:** ${input.priority === 'ahorro' ? 'Ahorro energético a largo plazo' : 'Menor inversión inicial'}
+- **Instalación:** ${input.installation === 'existente' ? 'Ya tiene instalación previa' : 'Instalación nueva'}
+- **WiFi:** ${input.wifi === 'si' ? 'Quiere control desde el celular' : 'No necesita WiFi'}
+
+**Equipos que le recomendamos:** ${input.recommendedProducts.join(', ')}
+
+Escribí un mensaje CORTO (máximo 2-3 oraciones) y ENTUSIASTA que:
+1. Valide su elección de priorizar ${input.priority === 'ahorro' ? 'el ahorro' : 'el presupuesto'}
+2. Destaque el beneficio principal del primer equipo recomendado
+3. Cierre con un call-to-action amigable para contactarnos
+
+Usá lenguaje argentino informal pero profesional. Podés usar emojis con moderación.`;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: prompt,
+    });
+
+    return response.text || "¡Excelentes opciones! Contactanos para asesorarte mejor.";
+  } catch (error) {
+    console.error("Quiz Recommendation Error:", error);
+    return "¡Buenas opciones! Escribinos para darte el mejor precio.";
+  }
+};
+
 export const analyzeRoomImage = async (
   base64Image: string
 ): Promise<string> => {

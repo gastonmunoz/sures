@@ -8,7 +8,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
-import RoomAnalyzer from './components/RoomAnalyzer';
+import SmartAdvisor from './components/SmartAdvisor';
 import WhatsAppFloat from './components/WhatsAppFloat';
 
 const App: React.FC = () => {
@@ -34,8 +34,8 @@ const App: React.FC = () => {
             <Catalog />
           </div>
           
-          <div id="analyzer" className="bg-gray-50 py-20">
-            <RoomAnalyzer />
+          <div id="advisor">
+            <SmartAdvisor />
           </div>
           
           <div id="contact">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { COMPANY_INFO } from '../constants';
-import { MapPin, Phone, Mail, Clock, AlertCircle, CheckCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, AlertCircle, MessageCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -15,8 +15,6 @@ const Contact: React.FC = () => {
     phone: '',
     email: ''
   });
-
-  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -60,16 +58,23 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(false);
 
     if (validate()) {
-      // Simulate submission
-      console.log('Formulario enviado:', formData);
-      setSubmitted(true);
-      setFormData({ name: '', phone: '', email: '', message: '' });
+      // Construir mensaje de WhatsApp
+      const mensaje = `¡Hola SURES! 👋
+
+*Nombre:* ${formData.name}
+${formData.phone ? `*Teléfono:* ${formData.phone}\n` : ''}*Email:* ${formData.email}
+
+*Consulta:*
+${formData.message || 'Me gustaría recibir más información.'}`;
+
+      // Abrir WhatsApp con el mensaje
+      const whatsappUrl = `https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(mensaje)}`;
+      window.open(whatsappUrl, '_blank');
       
-      // Reset success message after 5 seconds
-      setTimeout(() => setSubmitted(false), 5000);
+      // Limpiar formulario
+      setFormData({ name: '', phone: '', email: '', message: '' });
     }
   };
 
@@ -85,22 +90,7 @@ const Contact: React.FC = () => {
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Contacto</h2>
             <p className="text-gray-500 mb-8">Estamos listos para asesorarlo. Complete el formulario y un representante se comunicará a la brevedad.</p>
             
-            {submitted ? (
-              <div className="bg-green-50 border border-green-200 rounded-xl p-6 flex items-start gap-4 animate-fade-in">
-                <CheckCircle className="text-green-600 mt-1" size={24} />
-                <div>
-                  <h3 className="font-bold text-green-900">¡Mensaje Enviado!</h3>
-                  <p className="text-green-700">Gracias por contactarnos. Nos pondremos en contacto con usted pronto.</p>
-                  <button 
-                    onClick={() => setSubmitted(false)}
-                    className="mt-4 text-sm font-semibold text-green-800 hover:text-green-900 underline"
-                  >
-                    Enviar otro mensaje
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <form className="space-y-6" onSubmit={handleSubmit}>
+            <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Nombre Completo <span className="text-red-500">*</span></label>
                   <input 
@@ -165,11 +155,11 @@ const Contact: React.FC = () => {
                   ></textarea>
                 </div>
                 
-                <button type="submit" className="w-full py-4 bg-sures-primary text-white font-bold rounded-lg hover:bg-sures-dark transition-colors shadow-lg shadow-sures-primary/20">
-                  Enviar Mensaje
+                <button type="submit" className="w-full py-4 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition-colors shadow-lg shadow-green-600/30 flex items-center justify-center gap-3">
+                  <MessageCircle size={22} />
+                  Enviar por WhatsApp
                 </button>
               </form>
-            )}
           </div>
 
           {/* Info & Map */}
@@ -190,7 +180,14 @@ const Contact: React.FC = () => {
                     <Phone className="text-sures-primary mt-1 shrink-0" />
                     <div>
                       <p className="font-medium text-gray-900">Teléfonos</p>
-                      <p className="text-gray-500">{COMPANY_INFO.phone1} / {COMPANY_INFO.phone2}</p>
+                      <div className="flex flex-col gap-1">
+                        <a href={`tel:+5491132401124`} className="text-gray-500 hover:text-sures-primary transition-colors hover:underline">
+                          {COMPANY_INFO.phone1}
+                        </a>
+                        <a href={`tel:+5491132401768`} className="text-gray-500 hover:text-sures-primary transition-colors hover:underline">
+                          {COMPANY_INFO.phone2}
+                        </a>
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">

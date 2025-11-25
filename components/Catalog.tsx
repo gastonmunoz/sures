@@ -1,7 +1,9 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { PRODUCTS, COMPANY_INFO } from '../constants';
 import { Product } from '../types';
-import { Search, Info, Filter, X, Zap, Thermometer, ChevronLeft, ChevronRight, LayoutGrid, Snowflake, Scale, CheckSquare, Square, Trash2, Home, Building2, SlidersHorizontal, Check, MessageCircle, Ruler, Weight, Plug, Wind, Box } from 'lucide-react';
+import { Search, Info, X, Zap, Thermometer, ChevronLeft, ChevronRight, LayoutGrid, Snowflake, Scale, CheckSquare, Square, Trash2, Home, Building2, SlidersHorizontal, Check, MessageCircle, Ruler, Plug, Wind, Box, Heart } from 'lucide-react';
+import { useFavorites } from '../hooks/useFavorites';
+import FavoritesPanel from './FavoritesPanel';
 
 const Catalog: React.FC = () => {
   // Search & Pagination
@@ -22,6 +24,10 @@ const Catalog: React.FC = () => {
 
   // Detail Modal State
   const [viewingProduct, setViewingProduct] = useState<Product | null>(null);
+
+  // Favorites
+  const { favorites, toggleFavorite, isFavorite, clearFavorites, favoritesCount, removeFavorite } = useFavorites();
+  const [showFavorites, setShowFavorites] = useState(false);
 
   // Reset page to 1 when filters change
   useEffect(() => {
@@ -346,6 +352,19 @@ const Catalog: React.FC = () => {
                         <div className="absolute top-4 right-4 z-10 rounded-md bg-black/40 px-2 py-1 text-[10px] font-medium uppercase tracking-wider text-gray-300 backdrop-blur-md">
                           {product.type}
                         </div>
+
+                        {/* Favorite Heart Button */}
+                        <button
+                          onClick={(e) => { e.stopPropagation(); toggleFavorite(product.id); }}
+                          className={`absolute top-14 right-4 z-20 p-2 rounded-full backdrop-blur-md transition-all ${
+                            isFavorite(product.id)
+                              ? 'bg-red-500 text-white shadow-lg shadow-red-500/30 scale-110'
+                              : 'bg-black/40 text-gray-300 hover:bg-red-500 hover:text-white hover:scale-110'
+                          }`}
+                          title={isFavorite(product.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+                        >
+                          <Heart size={16} className={isFavorite(product.id) ? 'fill-current' : ''} />
+                        </button>
 
                         <img 
                           src={product.image} 
@@ -782,6 +801,35 @@ const Catalog: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* Floating Favorites Button */}
+      <button
+        onClick={() => setShowFavorites(true)}
+        className={`fixed bottom-24 right-6 z-40 flex items-center gap-2 px-4 py-3 rounded-full shadow-2xl transition-all hover:scale-105 ${
+          favoritesCount > 0 
+            ? 'bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-red-500/30' 
+            : 'bg-white text-gray-700 hover:bg-gray-50'
+        }`}
+      >
+        <Heart size={20} className={favoritesCount > 0 ? 'fill-current' : ''} />
+        {favoritesCount > 0 && (
+          <>
+            <span className="font-bold">{favoritesCount}</span>
+            <span className="hidden sm:inline text-sm">
+              {favoritesCount === 1 ? 'favorito' : 'favoritos'}
+            </span>
+          </>
+        )}
+      </button>
+
+      {/* Favorites Panel */}
+      <FavoritesPanel
+        isOpen={showFavorites}
+        onClose={() => setShowFavorites(false)}
+        favorites={favorites}
+        onRemove={removeFavorite}
+        onClear={clearFavorites}
+      />
 
     </section>
   );
