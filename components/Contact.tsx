@@ -212,13 +212,12 @@ const Contact: React.FC = () => {
                 </div>
              </div>
              
-             {/* Map Placeholder */}
+             {/* Map Section */}
              <div className="w-full h-64 bg-gray-200 rounded-2xl overflow-hidden relative group">
-                {/* Normally we'd use Google Maps Embed API here, for now using a static image placeholder */}
                 <img 
-                  src="https://picsum.photos/600/300?blur=2" 
-                  className="w-full h-full object-cover opacity-60 transition-opacity group-hover:opacity-75" 
-                  alt="Map Location" 
+                  src="/maps.jpg" 
+                  className="w-full h-full object-cover transition-all group-hover:scale-105" 
+                  alt="Ubicación de SURES" 
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <a 

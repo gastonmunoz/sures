@@ -53,7 +53,7 @@ export const getChatSession = async (): Promise<ChatSession> => {
   if (chatSession) return chatSession;
 
   chatSession = ai.chats.create({
-    model: "gemini-3-pro-preview", // High intelligence for chat
+    model: "gemini-2.5-flash", // High intelligence for chat
     config: {
       systemInstruction: CHAT_SYSTEM_INSTRUCTION,
       // tools: [], // Google Maps Removed
@@ -103,7 +103,7 @@ export const analyzeRoomImage = async (
 ): Promise<string> => {
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-3-pro-preview", // High intelligence for image analysis
+      model: "gemini-2.5-flash", // High intelligence for image analysis
       contents: {
         parts: [
           {
