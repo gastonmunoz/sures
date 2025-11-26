@@ -49,13 +49,13 @@ ${productList}
   return (
     <>
       {/* Backdrop */}
-      <div 
+      <div
         className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] animate-fade-in"
         onClick={onClose}
       />
 
       {/* Panel */}
-      <div className="fixed right-0 top-16 h-full w-full max-w-md bg-white shadow-2xl z-[60] animate-slide-in-right flex flex-col">
+      <div className="fixed right-0 top-16 h-[calc(100vh-4rem)] w-full max-w-md bg-white shadow-2xl z-[60] animate-slide-in-right flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-100">
           <div className="flex items-center gap-3">
@@ -65,11 +65,12 @@ ${productList}
             <div>
               <h2 className="text-lg font-bold text-gray-900">Mis Favoritos</h2>
               <p className="text-sm text-gray-500">
-                {favorites.length} {favorites.length === 1 ? 'producto' : 'productos'}
+                {favorites.length}{" "}
+                {favorites.length === 1 ? "producto" : "productos"}
               </p>
             </div>
           </div>
-          <button 
+          <button
             onClick={onClose}
             className="p-2 hover:bg-gray-100 rounded-xl transition-colors"
           >
@@ -88,7 +89,8 @@ ${productList}
                 No tenés favoritos todavía
               </h3>
               <p className="text-gray-500 text-sm mb-6">
-                Tocá el corazón en los productos que te interesen para guardarlos acá
+                Tocá el corazón en los productos que te interesen para
+                guardarlos acá
               </p>
               <button
                 onClick={onClose}
@@ -101,14 +103,14 @@ ${productList}
           ) : (
             <div className="p-4 space-y-3">
               {favorites.map((product) => (
-                <div 
+                <div
                   key={product.id}
                   className="flex gap-4 p-4 bg-gray-50 rounded-2xl group hover:bg-gray-100 transition-colors"
                 >
                   {/* Product Image */}
                   <div className="w-20 h-20 bg-white rounded-xl flex-shrink-0 p-2 flex items-center justify-center">
-                    <img 
-                      src={product.image} 
+                    <img
+                      src={product.image}
                       alt={product.name}
                       className="max-h-full w-auto object-contain mix-blend-multiply"
                     />
