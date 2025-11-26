@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { COMPANY_INFO } from '../constants';
-import { MapPin, Phone, Mail, Clock, AlertCircle, MessageCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, AlertCircle, MessageCircle, Send, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -16,10 +16,11 @@ const Contact: React.FC = () => {
     email: ''
   });
 
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    // Clear error when user types
     if (errors[name as keyof typeof errors]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -29,13 +30,11 @@ const Contact: React.FC = () => {
     let isValid = true;
     const newErrors = { name: '', phone: '', email: '' };
 
-    // Name Validation
     if (!formData.name.trim()) {
       newErrors.name = 'El nombre completo es obligatorio.';
       isValid = false;
     }
 
-    // Email Validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim()) {
       newErrors.email = 'El correo electrónico es obligatorio.';
@@ -45,7 +44,6 @@ const Contact: React.FC = () => {
       isValid = false;
     }
 
-    // Phone Validation (Format check if provided)
     const phoneRegex = /^[+]?[\d\s-]{6,}$/;
     if (formData.phone.trim() && !phoneRegex.test(formData.phone)) {
       newErrors.phone = 'Por favor, ingrese un número de teléfono válido.';
@@ -60,7 +58,6 @@ const Contact: React.FC = () => {
     e.preventDefault();
 
     if (validate()) {
-      // Construir mensaje de WhatsApp
       const mensaje = `¡Hola SURES! 👋
 
 *Nombre:* ${formData.name}
@@ -69,167 +66,260 @@ ${formData.phone ? `*Teléfono:* ${formData.phone}\n` : ''}*Email:* ${formData.e
 *Consulta:*
 ${formData.message || 'Me gustaría recibir más información.'}`;
 
-      // Abrir WhatsApp con el mensaje
       const whatsappUrl = `https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(mensaje)}`;
       window.open(whatsappUrl, '_blank');
       
-      // Limpiar formulario
       setFormData({ name: '', phone: '', email: '', message: '' });
     }
   };
 
   const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(COMPANY_INFO.address)}`;
 
+  const contactInfo = [
+    { 
+      icon: MapPin, 
+      title: 'Ubicación', 
+      content: COMPANY_INFO.address,
+      href: mapLink,
+      external: true
+    },
+    { 
+      icon: Phone, 
+      title: 'Teléfonos', 
+      content: [COMPANY_INFO.phone1, COMPANY_INFO.phone2],
+      href: `tel:+5491132401124`
+    },
+    { 
+      icon: Mail, 
+      title: 'Email', 
+      content: COMPANY_INFO.email,
+      href: `mailto:${COMPANY_INFO.email}`
+    },
+    { 
+      icon: Clock, 
+      title: 'Horarios', 
+      content: 'Lunes a Viernes de 08:00 a 17:00hs'
+    }
+  ];
+
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <section className="relative py-32 bg-sures-dark overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 grid-pattern opacity-30" />
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[150px]" />
+      <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-sures-primary/5 rounded-full blur-[120px]" />
+      
+      {/* Top Border */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-6">
+            <Send className="h-4 w-4 text-emerald-400" />
+            <span className="text-emerald-400 text-sm font-semibold uppercase tracking-widest">Contacto</span>
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            Hablemos de tu <span className="gradient-text">Proyecto</span>
+          </h2>
+          <p className="text-gray-400 text-lg">
+            Estamos listos para asesorarte. Completá el formulario y un representante se comunicará a la brevedad.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
           
-          {/* Form */}
-          <div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Contacto</h2>
-            <p className="text-gray-500 mb-8">Estamos listos para asesorarlo. Complete el formulario y un representante se comunicará a la brevedad.</p>
-            
-            <form className="space-y-6" onSubmit={handleSubmit}>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Nombre Completo <span className="text-red-500">*</span></label>
+          {/* Form - Takes 3 columns */}
+          <div className="lg:col-span-3">
+            <div className="glass-card rounded-3xl p-8 md:p-10">
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                {/* Name */}
+                <div className="relative">
+                  <label className="block text-sm font-medium text-gray-400 mb-2">
+                    Nombre Completo <span className="text-emerald-400">*</span>
+                  </label>
                   <input 
                     type="text" 
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-sures-primary focus:border-transparent outline-none transition-all ${errors.name ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                    onFocus={() => setFocusedField('name')}
+                    onBlur={() => setFocusedField(null)}
+                    className={`w-full px-5 py-4 rounded-xl bg-white/5 border text-white placeholder-gray-500 outline-none transition-all ${
+                      errors.name 
+                        ? 'border-red-500 bg-red-500/5' 
+                        : focusedField === 'name'
+                          ? 'border-sures-accent ring-2 ring-sures-accent/20'
+                          : 'border-white/10 hover:border-white/20'
+                    }`}
                     placeholder="Juan Pérez"
                   />
                   {errors.name && (
-                    <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                      <AlertCircle size={12} /> {errors.name}
+                    <p className="mt-2 text-sm text-red-400 flex items-center gap-1">
+                      <AlertCircle size={14} /> {errors.name}
                     </p>
                   )}
                 </div>
                 
+                {/* Phone & Email Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+                    <label className="block text-sm font-medium text-gray-400 mb-2">Teléfono</label>
                     <input 
                       type="tel" 
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-sures-primary focus:border-transparent outline-none transition-all ${errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                      onFocus={() => setFocusedField('phone')}
+                      onBlur={() => setFocusedField(null)}
+                      className={`w-full px-5 py-4 rounded-xl bg-white/5 border text-white placeholder-gray-500 outline-none transition-all ${
+                        errors.phone 
+                          ? 'border-red-500 bg-red-500/5' 
+                          : focusedField === 'phone'
+                            ? 'border-sures-accent ring-2 ring-sures-accent/20'
+                            : 'border-white/10 hover:border-white/20'
+                      }`}
                       placeholder="11 1234 5678"
                     />
                     {errors.phone && (
-                      <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                        <AlertCircle size={12} /> {errors.phone}
+                      <p className="mt-2 text-sm text-red-400 flex items-center gap-1">
+                        <AlertCircle size={14} /> {errors.phone}
                       </p>
                     )}
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Email <span className="text-red-500">*</span></label>
+                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                      Email <span className="text-emerald-400">*</span>
+                    </label>
                     <input 
                       type="email" 
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-sures-primary focus:border-transparent outline-none transition-all ${errors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                      onFocus={() => setFocusedField('email')}
+                      onBlur={() => setFocusedField(null)}
+                      className={`w-full px-5 py-4 rounded-xl bg-white/5 border text-white placeholder-gray-500 outline-none transition-all ${
+                        errors.email 
+                          ? 'border-red-500 bg-red-500/5' 
+                          : focusedField === 'email'
+                            ? 'border-sures-accent ring-2 ring-sures-accent/20'
+                            : 'border-white/10 hover:border-white/20'
+                      }`}
                       placeholder="juan@ejemplo.com"
                     />
                     {errors.email && (
-                      <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                        <AlertCircle size={12} /> {errors.email}
+                      <p className="mt-2 text-sm text-red-400 flex items-center gap-1">
+                        <AlertCircle size={14} /> {errors.email}
                       </p>
                     )}
                   </div>
                 </div>
                 
+                {/* Message */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Consulta</label>
+                  <label className="block text-sm font-medium text-gray-400 mb-2">Consulta</label>
                   <textarea 
                     name="message"
                     rows={4} 
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sures-primary focus:border-transparent outline-none transition-all"
-                    placeholder="Escriba su mensaje aquí..."
-                  ></textarea>
+                    onFocus={() => setFocusedField('message')}
+                    onBlur={() => setFocusedField(null)}
+                    className={`w-full px-5 py-4 rounded-xl bg-white/5 border text-white placeholder-gray-500 outline-none transition-all resize-none ${
+                      focusedField === 'message'
+                        ? 'border-sures-accent ring-2 ring-sures-accent/20'
+                        : 'border-white/10 hover:border-white/20'
+                    }`}
+                    placeholder="Escribí tu mensaje acá..."
+                  />
                 </div>
                 
-                <button type="submit" className="w-full py-4 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition-colors shadow-lg shadow-green-600/30 flex items-center justify-center gap-3">
-                  <MessageCircle size={22} />
+                {/* Submit Button */}
+                <button 
+                  type="submit" 
+                  className="group w-full py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-emerald-500/25 transition-all flex items-center justify-center gap-3"
+                >
+                  <MessageCircle size={20} />
                   Enviar por WhatsApp
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </button>
+                
+                {/* Trust Badge */}
+                <div className="flex items-center justify-center gap-2 pt-2 text-sm text-gray-500">
+                  <CheckCircle2 size={14} className="text-emerald-500" />
+                  Respuesta en menos de 24hs hábiles
+                </div>
               </form>
+            </div>
           </div>
 
-          {/* Info & Map */}
-          <div className="space-y-8">
-             <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Información de Contacto</h3>
-                <div className="space-y-4">
+          {/* Info Sidebar - Takes 2 columns */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Contact Cards */}
+            <div className="space-y-4">
+              {contactInfo.map((item, index) => (
+                <div 
+                  key={index}
+                  className="glass-card rounded-2xl p-5 hover-card group"
+                >
                   <div className="flex items-start gap-4">
-                    <MapPin className="text-sures-primary mt-1 shrink-0" />
-                    <div>
-                      <p className="font-medium text-gray-900">Ubicación</p>
-                      <a href={mapLink} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-sures-primary transition-colors hover:underline">
-                        {COMPANY_INFO.address}
-                      </a>
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-sures-primary to-sures-accent">
+                      <item.icon size={20} className="text-white" />
                     </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <Phone className="text-sures-primary mt-1 shrink-0" />
-                    <div>
-                      <p className="font-medium text-gray-900">Teléfonos</p>
-                      <div className="flex flex-col gap-1">
-                        <a href={`tel:+5491132401124`} className="text-gray-500 hover:text-sures-primary transition-colors hover:underline">
-                          {COMPANY_INFO.phone1}
+                    <div className="flex-1">
+                      <p className="font-medium text-white mb-1">{item.title}</p>
+                      {Array.isArray(item.content) ? (
+                        <div className="space-y-1">
+                          {item.content.map((c, i) => (
+                            <a 
+                              key={i}
+                              href={`tel:${c.replace(/\s/g, '')}`}
+                              className="block text-sm text-gray-400 hover:text-sures-accent transition-colors"
+                            >
+                              {c}
+                            </a>
+                          ))}
+                        </div>
+                      ) : item.href ? (
+                        <a 
+                          href={item.href}
+                          target={item.external ? '_blank' : undefined}
+                          rel={item.external ? 'noopener noreferrer' : undefined}
+                          className="text-sm text-gray-400 hover:text-sures-accent transition-colors"
+                        >
+                          {item.content}
                         </a>
-                        <a href={`tel:+5491132401768`} className="text-gray-500 hover:text-sures-primary transition-colors hover:underline">
-                          {COMPANY_INFO.phone2}
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <Mail className="text-sures-primary mt-1 shrink-0" />
-                    <div>
-                      <p className="font-medium text-gray-900">Email</p>
-                      <a href={`mailto:${COMPANY_INFO.email}`} className="text-gray-500 hover:text-sures-primary transition-colors hover:underline">
-                        {COMPANY_INFO.email}
-                      </a>
-                    </div>
-                  </div>
-                   <div className="flex items-start gap-4">
-                    <Clock className="text-sures-primary mt-1 shrink-0" />
-                    <div>
-                      <p className="font-medium text-gray-900">Horarios</p>
-                      <p className="text-gray-500">Lunes a Viernes de 08:00 a 17:00hs</p>
+                      ) : (
+                        <p className="text-sm text-gray-400">{item.content}</p>
+                      )}
                     </div>
                   </div>
                 </div>
-             </div>
+              ))}
+            </div>
              
-             {/* Map Section */}
-             <div className="w-full h-64 bg-gray-200 rounded-2xl overflow-hidden relative group">
-                <img 
-                  src="/maps.jpg" 
-                  className="w-full h-full object-cover transition-all group-hover:scale-105" 
-                  alt="Ubicación de SURES" 
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <a 
-                    href={mapLink}
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="px-6 py-3 bg-white/90 backdrop-blur text-sures-primary font-bold rounded-full shadow-lg hover:scale-105 transition-transform flex items-center gap-2"
-                  >
-                    <MapPin size={18} />
-                    Ver en Google Maps
-                  </a>
-                </div>
-             </div>
+            {/* Map */}
+            <div className="relative rounded-2xl overflow-hidden group h-48">
+              <img 
+                src="/maps.jpg" 
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                alt="Ubicación de SURES" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-sures-dark via-sures-dark/50 to-transparent" />
+              <div className="absolute inset-0 flex items-end justify-center pb-6">
+                <a 
+                  href={mapLink}
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="px-5 py-2.5 glass-card text-white text-sm font-medium rounded-full hover:bg-white/20 transition-all flex items-center gap-2"
+                >
+                  <MapPin size={16} className="text-sures-accent" />
+                  Ver en Google Maps
+                </a>
+              </div>
+            </div>
           </div>
-
         </div>
       </div>
     </section>

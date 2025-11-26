@@ -48,7 +48,10 @@
     <meta property="twitter:image" content="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=1200&auto=format&fit=crop">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Premium Fonts: Clash Display + Satoshi -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Structured Data (JSON-LD) for Local Business SEO -->
     <script type="application/ld+json">
@@ -101,18 +104,37 @@
           extend: {
             colors: {
               sures: {
-                primary: '#00007c',
-                secondary: '#A5A5A5',
-                dark: '#000050',
-                light: '#f3f4f6'
+                primary: '#0052FF',
+                secondary: '#64748b',
+                dark: '#020617',
+                light: '#f8fafc',
+                accent: '#00D4FF',
+                glow: '#0052FF'
+              },
+              frost: {
+                50: '#f0f9ff',
+                100: '#e0f2fe',
+                200: '#bae6fd',
+                300: '#7dd3fc',
+                400: '#38bdf8',
+                500: '#0ea5e9'
               }
             },
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+              display: ['Space Grotesk', 'system-ui', 'sans-serif'],
             },
             animation: {
-              'fade-in': 'fadeIn 0.5s ease-out forwards',
-              'slide-up': 'slideUp 0.8s ease-out forwards',
+              'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'slide-down': 'slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'scale-in': 'scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'float': 'float 6s ease-in-out infinite',
+              'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+              'gradient-x': 'gradientX 15s ease infinite',
+              'shimmer': 'shimmer 2s linear infinite',
+              'bounce-slow': 'bounce 3s ease-in-out infinite',
+              'spin-slow': 'spin 8s linear infinite',
             },
             keyframes: {
               fadeIn: {
@@ -120,71 +142,191 @@
                 '100%': { opacity: '1' },
               },
               slideUp: {
-                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '0%': { opacity: '0', transform: 'translateY(40px)' },
                 '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              slideDown: {
+                '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              scaleIn: {
+                '0%': { opacity: '0', transform: 'scale(0.9)' },
+                '100%': { opacity: '1', transform: 'scale(1)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              pulseGlow: {
+                '0%, 100%': { boxShadow: '0 0 20px rgba(0, 82, 255, 0.3)' },
+                '50%': { boxShadow: '0 0 40px rgba(0, 82, 255, 0.6)' },
+              },
+              gradientX: {
+                '0%, 100%': { backgroundPosition: '0% 50%' },
+                '50%': { backgroundPosition: '100% 50%' },
+              },
+              shimmer: {
+                '0%': { backgroundPosition: '-200% 0' },
+                '100%': { backgroundPosition: '200% 0' },
               }
+            },
+            backgroundImage: {
+              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+              'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+              'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
             }
           }
         }
       }
     </script>
     <style>
+      :root {
+        --sures-primary: #0052FF;
+        --sures-accent: #00D4FF;
+        --sures-dark: #020617;
+        --glow-color: rgba(0, 82, 255, 0.5);
+      }
+      
+      * {
+        scroll-behavior: smooth;
+      }
+      
       body {
-        font-family: 'Inter', sans-serif;
-        background-color: #ffffff;
-        color: #1a1a1a;
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        background-color: #020617;
+        color: #f8fafc;
         overflow-x: hidden;
       }
+      
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0f172a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, var(--sures-primary), var(--sures-accent));
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--sures-accent);
+      }
+      
+      /* Premium Glass Effects */
       .glass-panel {
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
       }
       .glass-panel-dark {
-        background: rgba(0, 0, 124, 0.85);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(2, 6, 23, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
       }
+      .glass-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+      
+      /* Glow Effects */
+      .glow-primary {
+        box-shadow: 0 0 30px rgba(0, 82, 255, 0.3), 0 0 60px rgba(0, 82, 255, 0.1);
+      }
+      .glow-accent {
+        box-shadow: 0 0 30px rgba(0, 212, 255, 0.3), 0 0 60px rgba(0, 212, 255, 0.1);
+      }
+      .text-glow {
+        text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+      }
+      
+      /* Gradient Text */
+      .gradient-text {
+        background: linear-gradient(135deg, #0052FF 0%, #00D4FF 50%, #0052FF 100%);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientX 3s ease infinite;
+      }
+      
+      /* Animated Border */
+      .animated-border {
+        position: relative;
+        background: linear-gradient(var(--sures-dark), var(--sures-dark)) padding-box,
+                    linear-gradient(135deg, var(--sures-primary), var(--sures-accent), var(--sures-primary)) border-box;
+        border: 2px solid transparent;
+        background-size: 100% 100%, 200% 200%;
+        animation: gradientX 4s ease infinite;
+      }
+      
+      /* Noise Overlay */
+      .noise-overlay::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.03;
+        pointer-events: none;
+        mix-blend-mode: overlay;
+      }
+      
+      /* Grid Pattern */
+      .grid-pattern {
+        background-image: 
+          linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+      }
+      
+      /* Dot Pattern */
+      .dot-pattern {
+        background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+        background-size: 20px 20px;
+      }
+      
+      /* Hover Card Effect */
+      .hover-card {
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .hover-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 82, 255, 0.15);
+      }
+      
+      /* Stagger Animation Delays */
+      .stagger-1 { animation-delay: 0.1s; }
+      .stagger-2 { animation-delay: 0.2s; }
+      .stagger-3 { animation-delay: 0.3s; }
+      .stagger-4 { animation-delay: 0.4s; }
+      .stagger-5 { animation-delay: 0.5s; }
       
       /* Markdown Styles for Chat & Analyzer */
       .markdown-body {
         font-size: 0.95em;
-        line-height: 1.5;
-        color: inherit; /* Inherit color from parent (white for user, dark for bot) */
-      }
-      .markdown-body p {
-        margin-bottom: 0.5em;
-      }
-      .markdown-body p:last-child {
-        margin-bottom: 0;
-      }
-      .markdown-body ul {
-        list-style-type: disc;
-        padding-left: 1.5em;
-        margin-bottom: 0.5em;
-      }
-      .markdown-body ol {
-        list-style-type: decimal;
-        padding-left: 1.5em;
-        margin-bottom: 0.5em;
-      }
-      .markdown-body li {
-        margin-bottom: 0.25em;
-      }
-      .markdown-body strong {
-        font-weight: 600;
+        line-height: 1.6;
         color: inherit;
       }
-      .markdown-body em {
-        font-style: italic;
-      }
+      .markdown-body p { margin-bottom: 0.5em; }
+      .markdown-body p:last-child { margin-bottom: 0; }
+      .markdown-body ul { list-style-type: disc; padding-left: 1.5em; margin-bottom: 0.5em; }
+      .markdown-body ol { list-style-type: decimal; padding-left: 1.5em; margin-bottom: 0.5em; }
+      .markdown-body li { margin-bottom: 0.25em; }
+      .markdown-body strong { font-weight: 600; color: inherit; }
+      .markdown-body em { font-style: italic; }
       .markdown-body h1, .markdown-body h2, .markdown-body h3 {
         font-weight: 700;
         margin-top: 0.75em;
         margin-bottom: 0.25em;
         font-size: 1.1em;
+      }
+      
+      /* Selection */
+      ::selection {
+        background: var(--sures-primary);
+        color: white;
       }
     </style>
   <script type="importmap">
